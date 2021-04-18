@@ -11,6 +11,7 @@ seaborn = "*"
 sklearn = "*"
 requests = "*"
 tensorflow = "*"
+nltk = "*"
 
 [dev-packages]
 
