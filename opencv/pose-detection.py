@@ -28,24 +28,24 @@ try:
 
     # Flags
     parser = argparse.ArgumentParser()
-    parser.add_argument("--image_path", default="./media/COCO_val2014_000000000474.jpg", help="Process an image. Read all standard formats (jpg, png, bmp, etc.).")
+    parser.add_argument("--image_path", default="./media/squat/index.jpeg", help="Process an image. Read all standard formats (jpg, png, bmp, etc.).")
     args = parser.parse_known_args()
 
     # Custom Params (refer to include/openpose/flags.hpp for more parameters)
     params = dict()
     params["model_folder"] = "./models/"
 
-    # Add others in path?
-    for i in range(0, len(args[1])):
-        curr_item = args[1][i]
-        if i != len(args[1])-1: next_item = args[1][i+1]
-        else: next_item = "1"
-        if "--" in curr_item and "--" in next_item:
-            key = curr_item.replace('-','')
-            if key not in params:  params[key] = "1"
-        elif "--" in curr_item and "--" not in next_item:
-            key = curr_item.replace('-','')
-            if key not in params: params[key] = next_item
+    # # Add others in path?
+    # for i in range(0, len(args[1])):
+    #     curr_item = args[1][i]
+    #     if i != len(args[1])-1: next_item = args[1][i+1]
+    #     else: next_item = "1"
+    #     if "--" in curr_item and "--" in next_item:
+    #         key = curr_item.replace('-','')
+    #         if key not in params:  params[key] = "1"
+    #     elif "--" in curr_item and "--" not in next_item:
+    #         key = curr_item.replace('-','')
+    #         if key not in params: params[key] = next_item
 
     # Construct it from system arguments
     # op.init_argv(args[1])
@@ -63,7 +63,7 @@ try:
     opWrapper.emplaceAndPop(op.VectorDatum([datum]))
 
     # Display Image
-    print("Body keypoints: \n" + str(datum.poseKeypoints))
+    print("Body keypoints: \n" + str(datum.poseKeypoints.shape))
     cv2.imshow("OpenPose 1.7.0 - Tutorial Python API", datum.cvOutputData)
     cv2.waitKey(0)
 except Exception as e:
