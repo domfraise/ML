@@ -12,6 +12,8 @@ sklearn = "*"
 requests = "*"
 tensorflow = "*"
 nltk = "*"
+textgenrnn = "*"
+opencv-python = "*"
 
 [dev-packages]
 
